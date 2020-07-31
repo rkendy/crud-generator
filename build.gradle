@@ -21,7 +21,9 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	compileOnly 'org.projectlombok:lombok'
+	compile 'org.modelmapper:modelmapper:2.3.8'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'com.h2database:h2'
 	annotationProcessor 'org.projectlombok:lombok'
@@ -32,4 +34,43 @@ dependencies {
 
 test {
 	useJUnitPlatform()
+}
+
+// Generate classes for Crud for 'ModelName' entity.
+// Usage: gradle generator -Dmodel=ModelName
+task generator() {
+
+	ext.generateFile = { filename, destination -> 
+		println "\tGenerating $filename at $destination ..."
+		copy {
+			from './src/crud-template/' + filename
+			into destination
+			rename 'Name(.*)', modelName + '$1'
+			filter { String line -> 
+				line.replaceAll('\\$Model\\$', modelName)
+					.replaceAll('\\$model\\$', modelName.toLowerCase())
+					.replaceAll('\\$package\\$', packagename)
+			}
+		}
+	}
+
+	ext.modelName = System.getProperty("model")
+	ext.packagename = "com.example.crudgenerator"
+	ext.packagedir = "./src/main/java/com/example/crudgenerator"
+	ext.testpackagedir = "./src/test/java/com/example/crudgenerator"
+
+	doLast {
+		println "Generating Crud files for model $modelName:"
+		
+		generateFile('Name.java', packagedir + '/model')
+		generateFile('NameController.java', packagedir + '/controller')
+		generateFile('NameControllerTest.java', testpackagedir + '/controller')
+		generateFile('NameControllerTestIT.java', testpackagedir + '/controller')
+		generateFile('NameDto.java', packagedir + '/dto')
+		generateFile('NameRepository.java', packagedir + '/repository')
+		generateFile('NameRepositoryTest.java', testpackagedir + '/repository')
+		generateFile('NameServiceImpl.java', packagedir + '/service/impl')
+		generateFile('NameServiceTest.java', testpackagedir + '/service')
+		generateFile('NameTestHelper.java', testpackagedir + '/helper')
+	}
 }
