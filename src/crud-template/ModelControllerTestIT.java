@@ -1,12 +1,12 @@
-package com.example.crudgenerator.controller;
+package $package$.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import br.uff.ihs.ss.dto.$Model$Dto;
-import br.uff.ihs.ss.model.$Model$;
-import br.uff.ihs.ss.util.MapperUtil;
+import $package$.dto.$Model$Dto;
+import $package$.model.$Model$;
+import $package$.util.MapperUtil;
 
 public class $Model$ControllerTestIT extends CrudControllerTestIT<$Model$> {
 

@@ -1,13 +1,13 @@
-package com.example.crudgenerator.controller;
+package $package$.controller;
 
 import java.util.List;
 
 import org.mockito.InjectMocks;
 
-import br.uff.ihs.ss.dto.$Model$Dto;
-import br.uff.ihs.ss.helper.$Model$TestHelper;
-import br.uff.ihs.ss.helper.TestHelper;
-import br.uff.ihs.ss.model.$Model$;
+import $package$.dto.$Model$Dto;
+import $package$.helper.$Model$TestHelper;
+import $package$.helper.TestHelper;
+import $package$.model.$Model$;
 
 public class $Model$ControllerTest extends CrudControllerTest<$Model$, $Model$Dto> {
 

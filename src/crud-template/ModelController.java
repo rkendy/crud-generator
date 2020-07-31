@@ -1,10 +1,10 @@
-package com.example.crudgenerator.controller;
+package $package$.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.uff.ihs.ss.dto.$Model$Dto;
-import br.uff.ihs.ss.model.$Model$;
+import $package$.dto.$Model$Dto;
+import $package$.model.$Model$;
 
 @RestController
 @RequestMapping($Model$Controller.ENDPOINT)

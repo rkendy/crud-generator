@@ -1,4 +1,4 @@
-package com.example.crudgenerator.dto;
+package $package$.dto;
 
 import javax.validation.constraints.NotBlank;
 

@@ -1,12 +1,12 @@
-package com.example.crudgenerator.helper;
+package $package$.helper;
 
 import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import com.example.crudgenerator.dto.$Model$Dto;
-import com.example.crudgenerator.model.$Model$;
-import com.example.crudgenerator.util.MapperUtil;
+import $package$.dto.$Model$Dto;
+import $package$.model.$Model$;
+import $package$.util.MapperUtil;
 
 @Component
 public class $Model$TestHelper implements TestHelper<$Model$> {

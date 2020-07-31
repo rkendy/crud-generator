@@ -1,9 +1,9 @@
-package com.example.crudgenerator.service.impl;
+package $package$.service.impl;
 
 import org.springframework.stereotype.Service;
 
-import com.example.crudgenerator.model.$Model$;
-import com.example.crudgenerator.service.CrudService;
+import $package$.model.$Model$;
+import $package$.service.CrudService;
 
 @Service
 public class $Model$ServiceImpl extends CrudService<$Model$> {

@@ -1,11 +1,11 @@
-package com.example.crudgenerator.repository;
+package $package$.repository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Test;
 
-import com.example.crudgenerator.model.$Model$;
+import $package$.model.$Model$;
 
 public class $Model$RepositoryTest extends CrudRepositoryTest<$Model$Repository, $Model$> {
 

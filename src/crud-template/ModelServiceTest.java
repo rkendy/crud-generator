@@ -1,13 +1,13 @@
-package com.example.crudgenerator.service;
+package $package$.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.mockito.InjectMocks;
 
-import com.example.crudgenerator.helper.$Model$TestHelper;
-import com.example.crudgenerator.helper.TestHelper;
-import com.example.crudgenerator.model.$Model$;
-import com.example.crudgenerator.service.impl.$Model$ServiceImpl;
+import $package$.helper.$Model$TestHelper;
+import $package$.helper.TestHelper;
+import $package$.model.$Model$;
+import $package$.service.impl.$Model$ServiceImpl;
 
 public class $Model$ServiceTest extends CrudServiceTest<$Model$> {
 

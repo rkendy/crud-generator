@@ -1,8 +1,8 @@
-package com.example.crudgenerator.repository;
+package $package$.repository;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.example.crudgenerator.model.$Model$;
+import $package$.model.$Model$;
 
 public interface $Model$Repository extends CrudRepository<$Model$, Long> {
 }

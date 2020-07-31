@@ -1,4 +1,4 @@
-package com.example.crudgenerator.model;
+package $package$.model;
 
 import java.io.Serializable;
 
