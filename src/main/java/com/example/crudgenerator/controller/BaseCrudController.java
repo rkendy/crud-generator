@@ -5,7 +5,9 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.crudgenerator.service.CrudService;
+import com.example.crudgenerator.util.MapperUtil;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,15 +17,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.example.crudgenerator.service.CrudService;
-import com.example.crudgenerator.util.MapperUtil;
-
 public abstract class BaseCrudController<MODEL, DTO> {
 
     final public String ENDPOINT_ID = "/{id}";
 
-    @Autowired
-    private CrudService<MODEL> service;
+    protected CrudService<MODEL> service;
 
     abstract protected Class<MODEL> getModelClass();
 

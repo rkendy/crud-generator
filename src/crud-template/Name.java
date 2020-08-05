@@ -9,8 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
-import $package$.dto.$Model$Dto;
-import $package$.util.MapperUtil;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

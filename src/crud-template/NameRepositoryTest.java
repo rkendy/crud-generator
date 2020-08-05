@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Test;
 
 import $package$.model.$Model$;
+import $package$.helper.$Model$TestHelper;
 
 public class $Model$RepositoryTest extends CrudRepositoryTest<$Model$Repository, $Model$> {
 

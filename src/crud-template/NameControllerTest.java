@@ -1,7 +1,5 @@
 package $package$.controller;
 
-import java.util.List;
-
 import org.mockito.InjectMocks;
 
 import $package$.dto.$Model$Dto;

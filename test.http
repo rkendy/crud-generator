@@ -1,0 +1,29 @@
+# Replace string test by actual created model.
+
+### Find all:
+http://localhost:8080/api/test/
+
+### Find by id:
+http://localhost:8080/api/test/1
+
+### Create:
+POST http://localhost:8080/api/test HTTP/1.1
+content-type: application/json
+
+{
+	"codigo": "CODIGO",
+	"nome": "Test Name"
+}
+
+### Update:
+PUT http://localhost:8080/api/test/1 HTTP/1.1
+content-type: application/json
+
+{
+	"codigo": "CODIGOXYZ",
+	"nome": "New Test Name"
+}
+
+
+### Delete:
+DELETE http://localhost:8080/api/test/1 HTTP/1.1

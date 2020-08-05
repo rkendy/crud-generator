@@ -1,25 +1,29 @@
 package $package$.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import $package$.model.$Model$;
-import $package$.service.CrudService;
+import $package$.service.BaseCrudService;
+import $package$.service.$Model$Service;
+import $package$.repository.$Model$Repository;
 
 @Service
-public class $Model$ServiceImpl extends CrudService<$Model$> {
+public class $Model$ServiceImpl extends BaseCrudService<$Model$> implements $Model$Service {
 
-    @Override
-    protected Class<?> getModelClass() {
-        return $Model$.class;
+    private $Model$Repository repository;
+
+    @Autowired
+    public $Model$ServiceImpl($Model$Repository repository) {
+        this.repository = repository;
+        super.setRepository(repository);
+        super.setModelClass($Model$.class);
     }
 
     @Override
-    protected void updateAttributes($Model$ toUpdate, $Model$ updated) {
-        // toUpdate.setAtivo(updated.getAtivo());
-        // toUpdate.setCodigo(updated.getCodigo());
-        // toUpdate.setEmail(updated.getEmail());
-        // toUpdate.setLotacao(updated.getLotacao());
-        // toUpdate.setNome(updated.getNome());
+    protected void updateAttributes($Model$ to, $Model$ from) {
+        to.setX(from.getX());
+        to.setY(from.getY());
     }
 
 }

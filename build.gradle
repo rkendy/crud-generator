@@ -38,7 +38,7 @@ test {
 
 // Generate classes for Crud for 'ModelName' entity.
 // Usage: gradle generator -Dmodel=ModelName
-task generator() {
+task generate() {
 
 	ext.generateFile = { filename, destination -> 
 		println "\tGenerating $filename at $destination ..."
@@ -69,6 +69,7 @@ task generator() {
 		generateFile('NameDto.java', packagedir + '/dto')
 		generateFile('NameRepository.java', packagedir + '/repository')
 		generateFile('NameRepositoryTest.java', testpackagedir + '/repository')
+		generateFile('NameService.java', packagedir + '/service')
 		generateFile('NameServiceImpl.java', packagedir + '/service/impl')
 		generateFile('NameServiceTest.java', testpackagedir + '/service')
 		generateFile('NameTestHelper.java', testpackagedir + '/helper')
