@@ -30,4 +30,11 @@ public class $Model$ implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @PrePersist
+    void preInsert() {
+        // Include default values:
+        // if (this.ativo == null)
+        // this.ativo = true;
+    }
+
 }
