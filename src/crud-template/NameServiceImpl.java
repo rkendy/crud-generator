@@ -20,10 +20,16 @@ public class $Model$ServiceImpl extends BaseCrudService<$Model$> implements $Mod
         super.setModelClass($Model$.class);
     }
 
-    @Override
-    protected void updateAttributes($Model$ to, $Model$ from) {
-        to.setX(from.getX());
-        to.setY(from.getY());
+    public $Model$ update(Long id, $Model$ model) {
+        return super.update(id, (toUpdate) -> {
+            // Update all attributes:
+            toUpdate = model;
+            toUpdate.setId(id);
+            // Or select which attributes will be updated:
+            // toUpdate.setA(model.getA());
+            // toUpdate.setB(model.getB());
+            return toUpdate;
+        });
     }
 
 }

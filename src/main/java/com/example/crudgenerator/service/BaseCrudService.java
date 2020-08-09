@@ -2,6 +2,7 @@ package com.example.crudgenerator.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 import com.example.crudgenerator.exception.NotFoundException;
 
@@ -11,8 +12,6 @@ public abstract class BaseCrudService<MODEL> {
 
     private CrudRepository<MODEL, Long> repository;
     private Class<?> modelClass;
-
-    protected abstract void updateAttributes(MODEL toModel, MODEL fromModel);
 
     public void setRepository(CrudRepository<MODEL, Long> repository) {
         this.repository = repository;
@@ -45,9 +44,9 @@ public abstract class BaseCrudService<MODEL> {
         return repository.findById(id).orElseThrow(() -> new NotFoundException(modelClass, id));
     }
 
-    public MODEL update(Long id, MODEL model) {
+    public MODEL update(Long id, Function<MODEL, MODEL> updateAttributes) {
         MODEL toUpdate = repository.findById(id).orElseThrow(() -> new NotFoundException(modelClass, id));
-        updateAttributes(toUpdate, model);
+        toUpdate = updateAttributes.apply(toUpdate);
         return repository.save(toUpdate);
     }
 
