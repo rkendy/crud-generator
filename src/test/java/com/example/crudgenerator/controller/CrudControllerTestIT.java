@@ -35,6 +35,9 @@ public abstract class CrudControllerTestIT<MODEL> {
     CrudService<MODEL> service;
 
     @Autowired
+    MapperUtil mapperUtil;
+
+    @Autowired
     TestHelper<MODEL> helper;
 
     @BeforeAll
@@ -65,7 +68,7 @@ public abstract class CrudControllerTestIT<MODEL> {
     public void givenModel_whenCreate_thenSuccess() {
         int beforeCount = service.findAll().size();
         MODEL model = helper.createOne();
-        ResponseEntity<String> response = makePostRequest(MapperUtil.convertToJson(model));
+        ResponseEntity<String> response = makePostRequest(helper.convertToJson(model));
         int afterCount = service.findAll().size();
         assertEquals(HttpStatus.CREATED.value(), response.getStatusCodeValue());
         assertEquals(beforeCount + 1, afterCount);

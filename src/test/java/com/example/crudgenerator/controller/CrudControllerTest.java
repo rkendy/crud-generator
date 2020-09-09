@@ -18,6 +18,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
+import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
@@ -34,6 +35,9 @@ public abstract class CrudControllerTest<MODEL, DTO> {
 
     @Mock
     private CrudService<MODEL> service;
+
+    @Spy
+    private MapperUtil mapperUtil;
 
     private TestHelper<MODEL> helper;
 
@@ -93,7 +97,7 @@ public abstract class CrudControllerTest<MODEL, DTO> {
         mockMvc.perform( //
                 post(getEndPoint()) //
                         .contentType(MediaType.APPLICATION_JSON) //
-                        .content(MapperUtil.convertToJson(created))) //
+                        .content(helper.convertToJson(created))) //
                 .andExpect(status().isCreated());
     }
 
@@ -106,7 +110,7 @@ public abstract class CrudControllerTest<MODEL, DTO> {
         mockMvc.perform( //
                 put(getEndPoint() + "/1") //
                         .contentType(MediaType.APPLICATION_JSON) //
-                        .content(MapperUtil.convertToJson(updated))) //
+                        .content(helper.convertToJson(updated))) //
                 .andExpect(status().isOk());
     }
 

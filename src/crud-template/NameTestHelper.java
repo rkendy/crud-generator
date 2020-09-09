@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 
 import $package$.dto.$Model$Dto;
 import $package$.model.$Model$;
-import $package$.util.MapperUtil;
 import $package$.helper.$Model$TestHelper;
 
 @Component
@@ -28,8 +27,8 @@ public class $Model$TestHelper implements TestHelper<$Model$> {
 
     @Override
     public String convertToJson($Model$ model) {
-        $Model$Dto dto = MapperUtil.convertToDto(model, $Model$Dto.class);
-        return MapperUtil.convertToJson(dto);
+        $Model$Dto dto = mapperUtil.convertToDto(model, $Model$Dto.class);
+        return mapperUtil.convertToJson(dto);
     }
 
     @Override

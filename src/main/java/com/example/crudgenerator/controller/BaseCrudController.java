@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import com.example.crudgenerator.service.CrudService;
 import com.example.crudgenerator.util.MapperUtil;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,12 +28,15 @@ public abstract class BaseCrudController<MODEL, DTO> {
 
     abstract protected Class<DTO> getDtoClass();
 
+    @Autowired
+    private MapperUtil mapperUtil;
+
     @GetMapping
     public ResponseEntity<List<DTO>> findAll() {
         List<MODEL> list = service.findAll();
         List<DTO> listDto = new ArrayList<>();
         list.forEach(e -> {
-            listDto.add(MapperUtil.convertToDto(e, getDtoClass()));
+            listDto.add(mapperUtil.convertToDto(e, getDtoClass()));
         });
         return ResponseEntity.ok(listDto);
     }
@@ -40,21 +44,21 @@ public abstract class BaseCrudController<MODEL, DTO> {
     @GetMapping(ENDPOINT_ID)
     public ResponseEntity<DTO> getById(@PathVariable Long id) {
         return ResponseEntity.ok( //
-                MapperUtil.convertToDto( //
+                mapperUtil.convertToDto( //
                         service.findById(id), getDtoClass()));
     }
 
     @PostMapping
     public ResponseEntity<DTO> create(@RequestBody @Valid DTO dto) {
-        MODEL created = service.create(MapperUtil.convertToEntity(dto, getModelClass()));
-        return ResponseEntity.status(HttpStatus.CREATED).body(MapperUtil.convertToDto(created, getDtoClass()));
+        MODEL created = service.create(mapperUtil.convertToEntity(dto, getModelClass()));
+        return ResponseEntity.status(HttpStatus.CREATED).body(mapperUtil.convertToDto(created, getDtoClass()));
     }
 
     @PutMapping(ENDPOINT_ID)
     public ResponseEntity<DTO> update(@PathVariable Long id, @RequestBody @Valid DTO dto) {
-        MODEL updated = service.update(id, MapperUtil.convertToEntity(dto, getModelClass()));
+        MODEL updated = service.update(id, mapperUtil.convertToEntity(dto, getModelClass()));
         return ResponseEntity.ok( //
-                MapperUtil.convertToDto(updated, getDtoClass()));
+                mapperUtil.convertToDto(updated, getDtoClass()));
     }
 
     @DeleteMapping(ENDPOINT_ID)
