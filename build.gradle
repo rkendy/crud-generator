@@ -37,7 +37,7 @@ test {
 }
 
 // Generate classes for Crud for 'ModelName' entity.
-// Usage: gradle generator -Dmodel=ModelName
+// Usage: gradle generate -Dmodel=ModelName
 task generate() {
 
 	ext.generateFile = { filename, destination -> 
